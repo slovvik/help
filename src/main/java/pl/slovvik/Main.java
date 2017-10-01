@@ -10,7 +10,6 @@ public class Main {
         App app = new App();
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 //        System.out.println(app.readFileName(reader));
-        app.setFileName("noText.txt");
         System.out.println(app.readStuff());
     }
 }

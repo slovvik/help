@@ -19,19 +19,8 @@ public class App {
         this.fileName = fileName;
     }
 
-    public String getFileName() {
-        return fileName;
-    }
-
-    public void setFileName(String fileName) {
+    public App(String fileName, String fileString) {
         this.fileName = fileName;
-    }
-
-    public String getFileString() {
-        return fileString;
-    }
-
-    public void setFileString(String fileString) {
         this.fileString = fileString;
     }
 
@@ -55,7 +44,8 @@ public class App {
         return fileString;
     }
 
-    public String deleteWhitespace(String fileString) {
-        return StringUtils.deleteWhitespace(String.valueOf(fileString));
+    public String deleteWhitespace() {
+        fileString = StringUtils.deleteWhitespace(String.valueOf(fileString));
+        return fileString;
     }
 }

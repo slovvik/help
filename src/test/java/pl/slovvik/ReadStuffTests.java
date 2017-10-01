@@ -3,18 +3,13 @@ package pl.slovvik;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.BufferedReader;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 public class ReadStuffTests {
 
-    private static final String FILE_TEXT = "dfdfafdafadsf";
+    private static final String FILE_TEXT = "d fd fafda fads f";
 
     private App app;
-    private BufferedReader reader;
 
     @Before
     public void setUp() {
