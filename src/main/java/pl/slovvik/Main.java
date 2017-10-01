@@ -1,12 +1,16 @@
 package pl.slovvik;
 
-import java.io.IOException;
-import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 //        Arrays.stream(args).forEach(System.out::println);
         App app = new App();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+//        System.out.println(app.readFileName(reader));
+        app.setFileName("noText.txt");
+        System.out.println(app.readStuff());
     }
 }

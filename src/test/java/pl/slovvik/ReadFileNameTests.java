@@ -11,7 +11,7 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class ReadFileTest {
+public class ReadFileNameTests {
 
     private App app;
     private BufferedReader reader;
@@ -41,6 +41,5 @@ public class ReadFileTest {
         when(reader.readLine()).thenReturn("FileName");
         String fileName = app.readFileName(reader);
         assertThat(fileName, is("FileName"));
-
     }
 }

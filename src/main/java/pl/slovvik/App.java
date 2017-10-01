@@ -6,7 +6,6 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 
 public class App {
 
@@ -16,9 +15,8 @@ public class App {
     public App() {
     }
 
-    public App(String fileName, String fileString) {
+    public App(String fileName) {
         this.fileName = fileName;
-        this.fileString = fileString;
     }
 
     public String getFileName() {
@@ -37,24 +35,27 @@ public class App {
         this.fileString = fileString;
     }
 
-    public String readFileName(BufferedReader reader) throws Exception {
+    public String readFileName(BufferedReader reader) throws IOException {
+        System.out.print("Please specify file name: ");
         fileName = reader.readLine();
         if (fileName == null || fileName.length() == 0) throw new ReadFileNameException("");
         return fileName;
     }
 
-    public String readStuff(String fileName) throws IOException {
-        InputStream targetFile;
-        targetFile = getClass().getResourceAsStream(fileName);
-        if (targetFile != null) {
-            fileString = IOUtils.toString(targetFile, "UTF-8");
-        }
+    public String readStuff() throws IOException {
+        if (fileName != null && !fileName.equals("")) {
+            InputStream targetFile = getClass().getClassLoader().getResourceAsStream(fileName);
+            if (targetFile != null) {
+                fileString = IOUtils.toString(targetFile, "UTF-8");
+                targetFile.close();
+            } else {
+                throw new ReadStuffException("Cannot find file");
+            }
+        } else throw new ReadFileNameException("Cannot find file with empty file name");
         return fileString;
     }
 
-
     public String deleteWhitespace(String fileString) {
-        String updatedText = StringUtils.deleteWhitespace(String.valueOf(fileString));
-        return updatedText;
+        return StringUtils.deleteWhitespace(String.valueOf(fileString));
     }
 }
